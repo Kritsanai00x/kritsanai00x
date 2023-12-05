@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kritsanai</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="header">
+    <nav class="nav container">
+      <div class="nav__data">
+        <a href="#" class="nav__logo">
+          <i class="ri-pass-pending-fill"></i> HomeWork
+        </a>
+
+        <div class="nav__toggle" id="nav-toggle">
+          <i class="ri-menu-line nav__burger"></i>
+          <i class="ri-close-line nav__close"></i>
+        </div>
+      </div>
+
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="dropdown__item">
+            <div class="nav__link">
+              Main <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+            </div>
+            <ul class="dropdown__menu">
+              <li>
+                <a href="index.html" class="dropdown__link">
+                  <i class="ri-file-info-fill"></i> HOME
+                </a>
+              </li>
+              <li>
+                <a href="API.html" class="dropdown__link">
+                  <i class="ri-file-info-fill"></i> API
+                </a>
+              </li>
+              </li>
+            </ul>
+          </li>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+<br>
+<br>
+<br>
+  <section class="sec-5">
+    <center>
+        <h1>Javascript</h1>
+    </center>
+    <div class="box">
+        <h2>หาความยาวเส้นทแยงมุมของสี่เหลี่ยงผืนผ้า</h2>
+        <input id="base" type="text" placeholder="ป้อนความยาวของฐาน" />
+        <input id="height" type="text" placeholder="ป้อนความสูง" />
+        <h4>ผลลัพธ์:<span id="show"></span></h4>
+        <button onclick="calculateHypotenuse(document.getElementById('base').value, document.getElementById('height').value)">
+      คำนวน
+    </button>
+    </div>
+
+    <div class="box">
+        <h2>หาความยาวเส้นรอบวง</h2>
+        <input id="input" type="text" placeholder="รัศมี" />
+        <button onclick="calculateAndDisplayCircumference()">คำนวน</button>
+        <h4>ความยาวเส้นรอบวงกลม:<span id="result"></span></h4>
+    </div>
+
+
+    <div class="box">
+        <h2>หาค่าอุภูมิ</h2>
+        <h4><span id="show1"></span></h4>
+        <button onclick="fahrenheitToCelsius()">กดปุ่ม</button>
+    </div>
+
+    <div class="box">
+        <h2>แปลงค่าวันต่อนาที</h2>
+        <input type="text" id="daysInput" />
+        <h4><span id="show2"></span></h4>
+        <button onclick="dayToSeconds()">คำนวน</button>
+    </div>
+    <div class="box">
+        <h2>A-Z</h2>
+        <h4><span id="show3"></span></h4>
+    </div>
+
+
+</header>
+<script>
+    function printAlphabets() {
+        for (let charCode = 65; charCode <= 90; charCode++) {
+            const alphabet = String.fromCharCode(charCode);
+            setTimeout(() => {
+                console.log(alphabet);
+            }, (charCode - 65) * 1000);
+        }
+    }
+
+    function printAlphabets() {
+        let result = '';
+        for (let charCode = 65; charCode <= 90; charCode++) {
+            const alphabet = String.fromCharCode(charCode);
+            setTimeout(() => {
+                result = alphabet;
+                document.getElementById('show3').innerText = result;
+            }, (charCode - 65) * 1000);
+        }
+    }
+
+    printAlphabets();
+
+    function dayToSeconds() {
+        let inputDays = document.getElementById("daysInput").value;
+        if (!isNaN(inputDays)) {
+            let seconds = inputDays * 86400;
+            document.getElementById(
+                "show2"
+            ).innerText = `จำนวนวัน ${inputDays} วัน: ${seconds} นาที`;
+        } else {
+            alert("Please enter a valid number of days.");
+        }
+    }
+
+    // หาความยาวเส่นรอบวง
+    function calculateCircleCircumference(radius) {
+        return 2 * Math.PI * radius;
+    }
+
+    function calculateAndDisplayCircumference() {
+        let inputElement = document.getElementById("input");
+        let resultElement = document.getElementById("result");
+
+        let radius = parseFloat(inputElement.value);
+
+        if (!isNaN(radius)) {
+            let circumference = calculateCircleCircumference(radius);
+            resultElement.textContent = circumference.toFixed(2);
+        } else {
+            resultElement.textContent = "กรุณากรอกค่าที่ถูกต้อง";
+        }
+    }
+
+    function fahrenheitToCelsius() {
+        let inputFahrenheit = prompt("Enter temperature in Fahrenheit:");
+        let celsiusValue = (parseFloat(inputFahrenheit) - 32) * (5 / 9);
+        document.getElementById(
+            "show1"
+        ).innerText = `Fahrenheit: ${inputFahrenheit}°F, Celsius: ${celsiusValue.toFixed(
+      2
+    )}°C`;
+    }
+
+    // หาความยาวเส่นทแยงมุมของสี่เหลี่ยงผืนผ้า
+    function calculateHypotenuse(base, height) {
+        let result = Math.sqrt(base ** 2 + height ** 2);
+        document.getElementById("show").innerHTML = result.toFixed(3);
+    }
+</script>
+  </section>
+
+  <footer class="footer-distributed">
+    <div class="footer-right">
+      <a href="https://web.facebook.com/profile.php?id=100023527097197"><i class="ri-facebook-fill"></i></a>
+
+    </div>
+    <div class="footer-left">
+      <p>Khon Kaen Technical College &copy; 2023</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
